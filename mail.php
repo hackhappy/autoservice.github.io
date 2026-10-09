@@ -2,7 +2,8 @@
 
 //Send Mail PHP Script
 
-$frm_name = stripcslashes($_POST['name']);
+// Name goes into the From header: strip CR/LF so no extra headers can be injected
+$frm_name = str_replace(array("\r", "\n"), '', stripcslashes($_POST['name']));
 $frm_phone = stripcslashes($_POST['phone']);
 $frm_city = stripcslashes($_POST['city']);
 $frm_info = stripcslashes($_POST['info']);
